@@ -26,9 +26,16 @@ router.use((req: express.Request, res: express.Response, next: express.NextFunct
 
 router.post('/signup', async (req: express.Request, res: express.Response) => {
     try {
+        const searchedUser = await userController.findUser(req.user);
+        if (!_isEmpty(searchedUser)) {
+            res.status(401).json({
+                message: 'User already exist',
+            }).end();
+            return;
+        }
         const savedUser = await userController.createUser(req.user);
         res.status(200).json({
-        user: savedUser,
+            user: savedUser,
         });
     } catch (err) {
         res.status(500).json({
@@ -44,7 +51,8 @@ router.post('/login', async (req: express.Request, res: express.Response) => {
         if (_isEmpty(searchedUser)) {
             res.status(401).json({
                 errorMessage: 'User Not Found',
-            });
+            }).end();
+            return;
         } 
         const token: string = jwt.sign({ email: user.email }, <any> process.env.JWT_PRIVATE_KEY);
         res.status(200).json({ token });

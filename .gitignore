@@ -3,3 +3,5 @@ backend/dist
 backend/nodemon.json
 backend/ormconfig.json
 backend/package-lock.json
+backend/yarn-error.log
+.DS_Store
