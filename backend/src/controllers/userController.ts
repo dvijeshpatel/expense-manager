@@ -3,11 +3,9 @@ import User from '../entities/User';
 
 class UserController {
     static createUser = async<T extends { email: string, password: string}>(user: T) => {
-        const { email, password } = user;
-        const userToSave: User = new User(email, password);
         const userRepository = getRepository(User);
         try {
-            const savedUser = await userRepository.save(userToSave);
+            const savedUser = await userRepository.save(user);
             return savedUser;
         } catch (err) {
             throw err;
@@ -15,11 +13,9 @@ class UserController {
     }
 
     static findUser = async<T extends {email: string, password: string}> (user: T) => {
-        const { email, password } = user;
-        const userToFind: User = new User(email, password);
         const userRepository = getRepository(User);
         try {
-           const searchedUser =  await userRepository.findOne(userToFind); 
+           const searchedUser =  await userRepository.findOne(user); 
             return searchedUser;
         } catch (err) {
             throw err;

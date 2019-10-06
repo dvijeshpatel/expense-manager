@@ -1,11 +1,10 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import user from './routes/user';
 
 const app: express.Express = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false} ));
+app.use(express.json());
 
 app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.header('Access-Control-Allow-Origin', '*');

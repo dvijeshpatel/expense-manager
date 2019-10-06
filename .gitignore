@@ -1,0 +1,5 @@
+backend/node_modules
+backend/dist
+backend/nodemon.json
+backend/ormconfig.json
+backend/package-lock.json

@@ -1,5 +1,6 @@
 {
     "env": {
-        "JWT_PRIVATE_KEY": "jwtprivatekey"
+        "JWT_PRIVATE_KEY": "jwtprivatekey",
+        "PORT": 3000
     }
 }

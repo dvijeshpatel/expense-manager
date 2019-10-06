@@ -7,6 +7,6 @@
     "database": "expense-manager",
     "synchronize": true,
     "entities": [
-       "libs/entities/**/*.js"
+       "dist/entities/**/*.js"
     ]
  }
