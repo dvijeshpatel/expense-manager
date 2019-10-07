@@ -2,21 +2,29 @@ import { getRepository } from 'typeorm';
 import User from '../entities/User';
 
 class UserController {
-    static createUser = async<T extends { email: string, password: string}>(user: T) => {
+    static createUser = async<T extends { email: string, password: string}>(user: T): Promise<User> => {
         const userRepository = getRepository(User);
         try {
-            const savedUser = await userRepository.save(user);
-            return savedUser;
+            return await userRepository.save(user);
         } catch (err) {
             throw err;
         }
     }
 
-    static findUser = async<T extends {email: string, password: string}> (user: T) => {
+    static searchUser = async<T extends {email: string, password: string}> (user: T): Promise<User | undefined>  => {
         const userRepository = getRepository(User);
         try {
-           const searchedUser =  await userRepository.findOne(user); 
-            return searchedUser;
+           return await userRepository.findOne({ email: user.email });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    static removeUser = async<T extends {email: string }> (user: T): Promise<any>  => {
+        const userRepository = getRepository(User);
+        try {
+           const searcheduser = await userRepository.find(user); 
+           userRepository.remove(searcheduser);
         } catch (err) {
             throw err;
         }

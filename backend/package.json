@@ -16,6 +16,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mysql": "^2.17.1",
+    "nodemailer": "^6.3.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.19"
   },
@@ -24,6 +25,7 @@
     "@types/jsonwebtoken": "^8.3.4",
     "@types/lodash": "^4.14.141",
     "@types/node": "^12.7.8",
+    "@types/nodemailer": "^6.2.1",
     "nodemon": "^1.19.2",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"

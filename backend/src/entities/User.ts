@@ -8,6 +8,8 @@ class User extends BaseEntity {
     email: string;
     @Column()
     password: string;
+    @Column()
+    isVerified: boolean = false;
     constructor(email: string, password: string) {
         super();
         this.email = email;
